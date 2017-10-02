@@ -1,6 +1,12 @@
 """Genetic Algorithm Example1
 DNA population is close to the maximum value of the target function by GA
 Use visualization to observe this phenomenon
+
+Key points
+1. Define DNA
+Consider the DNA size is 5, the DNA is defined like [0, 1, 1, 0, 1]
+2. Define fitness
+The basic idea is the DNA has the biggest value of target function that has the good fitness
 """
 
 import numpy as np
@@ -8,8 +14,8 @@ import matplotlib.pyplot as plt
 
 DNA_SIZE = 10
 POP_SIZE = 100
-CROSS_RATE = 0.8 # mating probability
-MUTATION_RATE = 0.03 # mutation probability
+CROSS_RATE = 0.8  # mating probability
+MUTATION_RATE = 0.03  # mutation probability
 N_GENERATIONS = 300
 DNA_BOUND = [0, 10]
 
@@ -17,7 +23,7 @@ DNA_BOUND = [0, 10]
 pop = np.random.randint(0, 2, size=(POP_SIZE, DNA_SIZE))
 
 # convert the binary DNA to range(0, 5)
-def tanslateDNA2x(pop):
+def translateDNA2x(pop):
     return pop.dot(2 ** np.arange(0, DNA_SIZE)[::-1])/(2 ** DNA_SIZE - 1)*DNA_BOUND[1]
 
 # target function
@@ -57,7 +63,7 @@ x = np.linspace(DNA_BOUND[0], DNA_BOUND[1], 300)
 plt.plot(x, F(x))
 
 for generation in range(N_GENERATIONS):
-    F_value = F(tanslateDNA2x(pop))
+    F_value = F(translateDNA2x(pop))
     F_avg = round(F_value.mean(), 3)
 
     if "plot_points" in globals():
@@ -65,7 +71,7 @@ for generation in range(N_GENERATIONS):
         plot_text1.remove()
         plot_text2.remove()
 
-    plot_points = plt.scatter(tanslateDNA2x(pop), F_value, c="red")
+    plot_points = plt.scatter(translateDNA2x(pop), F_value, c="red")
     plot_text1 = plt.text(0, 15, "generation: {0}".format(generation))
     plot_text2 = plt.text(0, 13, "DNA average value: {0}".format(F_avg))
     plt.pause(0.05)
