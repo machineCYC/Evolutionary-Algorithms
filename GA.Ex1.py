@@ -17,14 +17,14 @@ POP_SIZE = 100
 CROSS_RATE = 0.8  # mating probability
 MUTATION_RATE = 0.03  # mutation probability
 N_GENERATIONS = 300
-DNA_BOUND = [0, 10]
+X_BOUND = [0, 10]
 
 # generate the initial population DNA
 pop = np.random.randint(0, 2, size=(POP_SIZE, DNA_SIZE))
 
-# convert the binary DNA to range(0, 5)
+# convert the binary DNA to range(0, 10)
 def translateDNA2x(pop):
-    return pop.dot(2 ** np.arange(0, DNA_SIZE)[::-1])/(2 ** DNA_SIZE - 1)*DNA_BOUND[1]
+    return pop.dot(2 ** np.arange(0, DNA_SIZE)[::-1])/(2 ** DNA_SIZE - 1)*X_BOUND[1]
 
 # target function
 def F(x):
@@ -59,7 +59,7 @@ def mutate(child):
 
 # dynamic plot
 plt.ion()
-x = np.linspace(DNA_BOUND[0], DNA_BOUND[1], 300)
+x = np.linspace(*X_BOUND, 300)
 plt.plot(x, F(x))
 
 for generation in range(N_GENERATIONS):
