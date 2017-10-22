@@ -76,7 +76,7 @@ for g in range(N_GENERATIONS):
 
     plot_points_k = plt.scatter(kid, F(kid), c="r", s=200, alpha=0.5)  # kid
     plot_points_p = plt.scatter(PARENT, F(PARENT), c="blue", s=200, alpha=0.5)  # parent
-    plot_text_g = plt.text(0, 15, "Generation: %i" % g)
+    plot_text_g = plt.text(0, 15, "Generation: %d" % g)
     plot_text_v = plt.text(0, 13, "DNA_var: %f" % DNA_var)
     plt.pause(0.1)
 
