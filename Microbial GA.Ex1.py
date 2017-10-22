@@ -64,7 +64,7 @@ for g in range(N_GENERATION):
         plot_text.remove()
 
     plot_points = plt.scatter(translateDNA2x(POP), F(translateDNA2x(POP)), c="r", s=100, alpha=0.5)
-    plot_text = plt.text(0, -10, "Generation: %i" % g)
+    plot_text = plt.text(0, -10, "Generation: %d" % g)
     plt.pause(0.05)
 
     for _ in range(5):
