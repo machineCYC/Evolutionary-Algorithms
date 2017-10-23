@@ -82,7 +82,7 @@ for g in range(N_GENERATION):
         plot_text.remove()
 
     plot_points = plt.scatter(POP["DNA"], F(get_fitness(POP["DNA"])), c="r", s=200, alpha=0.5)
-    plot_text = plt.text(0, 10, "Generation: %i" % g)
+    plot_text = plt.text(0, 10, "Generation: %d" % g)
     plt.pause(0.05)
 
     kids = make_kids(KID_SIZE, POP)
